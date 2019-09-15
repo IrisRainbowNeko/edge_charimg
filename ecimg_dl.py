@@ -3,6 +3,7 @@ import numpy as np
 from PIL import Image
 import LeNet
 
+imgpath=r'./fbk.jpg'
 net=LeNet.load_build_net('./weights/LeNet_epoch49.pth')
 
 def get_cloest_char(img):
@@ -15,8 +16,8 @@ def close_demo(image,size=(5,5)):
     binary = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel,anchor=(-1, -1), iterations=3)
     return binary
 
-image = cv2.imread(r'./xx.jpg')
-image = cv2.resize(image, (600,400), interpolation = cv2.INTER_AREA)
+image = cv2.imread(imgpath)
+#image = cv2.resize(image, (600,400), interpolation = cv2.INTER_AREA)
 canny = cv2.Canny(image,100,230)
 #canny = close_demo(canny,(3,3))
 #canny = cv2.resize(canny, (400,600), interpolation = cv2.INTER_AREA)
